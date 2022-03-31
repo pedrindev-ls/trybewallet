@@ -1,7 +1,7 @@
 import React from 'react';
 
 function App() {
-  return <div>Hello, TrybeWallet!</div>;
+  return <h1>TrybeWallet!</h1>;
 }
 
 export default App;
