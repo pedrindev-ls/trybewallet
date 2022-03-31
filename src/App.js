@@ -1,7 +1,11 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
+import Login from './pages/Login';
 
 function App() {
-  return <h1>TrybeWallet!</h1>;
+  return (
+    <Route path="/" component={ Login } />
+  );
 }
 
 export default App;

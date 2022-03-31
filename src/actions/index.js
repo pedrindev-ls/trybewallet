@@ -1,1 +1,1 @@
-// Coloque aqui suas actions
+export const addEmail = (email) => ({ type: 'addEmail', email });
