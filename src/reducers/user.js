@@ -1,10 +1,12 @@
+import { addEmailVariable } from '../actions';
+
 const initialState = {
   email: '',
 };
 
 const user = (state = initialState, action) => {
   switch (action.type) {
-  case 'addEmail': {
+  case addEmailVariable: {
     return {
       ...state,
       email: action.email,
