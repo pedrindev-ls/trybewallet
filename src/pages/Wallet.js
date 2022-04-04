@@ -54,7 +54,7 @@ class Wallet extends React.Component {
   }
 
   render() {
-    const { userEmail, currents } = this.props;
+    const { userEmail, currents, expenses } = this.props;
     const { value, description, totalValue } = this.state;
     return (
       <div>
@@ -131,15 +131,34 @@ class Wallet extends React.Component {
         </form>
         <button type="button" onClick={ this.handleClick }>Adicionar despesa</button>
         <table>
-          <th>Descrição</th>
-          <th>Tag</th>
-          <th>Método de pagamento</th>
-          <th>Valor</th>
-          <th>Moeda</th>
-          <th>Câmbio utilizado</th>
-          <th>Valor convertido</th>
-          <th>Moeda de conversão</th>
-          <th>Editar/Excluir</th>
+          <thead>
+            <th>Descrição</th>
+            <th>Tag</th>
+            <th>Método de pagamento</th>
+            <th>Valor</th>
+            <th>Moeda</th>
+            <th>Câmbio utilizado</th>
+            <th>Valor convertido</th>
+            <th>Moeda de conversão</th>
+            <th>Editar/Excluir</th>
+          </thead>
+          {expenses.map((element) => (
+            <tbody key={ element.id }>
+              <td>{element.description}</td>
+              <td>{element.tag}</td>
+              <td>{element.method}</td>
+              <td>{parseFloat(element.value).toFixed(2)}</td>
+              <td>{element.exchangeRates[element.currency].name}</td>
+              <td>
+                {
+                  parseFloat(element.exchangeRates[element.currency].ask).toFixed(2)
+                }
+              </td>
+              <td>{element.value * +(element.exchangeRates[element.currency].ask)}</td>
+              <td>Real</td>
+              {/* <th>{element.}</th> */}
+            </tbody>
+          ))}
         </table>
       </div>);
   }
@@ -149,7 +168,6 @@ const mapStateToProps = (store) => ({
   userEmail: store.user.email,
   currents: store.wallet.currencies,
   expenses: store.wallet.expenses,
-  state: store.wallet,
 });
 
 const mapDispatchToProps = (dispatch) => ({
