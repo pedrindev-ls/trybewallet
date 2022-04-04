@@ -5,7 +5,9 @@ export const addEmail = (email) => ({ type: 'addEmail', email });
 export const takeCurrencies = (currencies) => ({ type: 'addCurrencies', currencies });
 export const notTakeCurrencies = (error) => ({ type: 'currenciesError', error });
 export const startTakeCurrencies = () => ({ type: 'workingOnCurrencies' });
-export const addSpent = (spentObj) => ({ type: 'addSpent', spentObj });
+export const addSpent = (spentObj) => (
+  { type: 'addSpent', spentObj });
+export const removeSpent = (newObj) => ({ type: 'removeSpent', newObj });
 
 export function takingCurrencies() {
   return async (dispatch) => {

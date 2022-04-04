@@ -2,6 +2,7 @@ const initialState = {
   currencies: [],
   isFetching: false,
   expenses: [],
+  totalValue: 0,
 };
 
 const wallet = (state = initialState, action) => {
@@ -30,6 +31,12 @@ const wallet = (state = initialState, action) => {
     return {
       ...state,
       expenses: [...state.expenses, action.spentObj],
+    };
+  }
+  case 'removeSpent': {
+    return {
+      ...state,
+      expenses: action.newObj,
     };
   }
   default:
